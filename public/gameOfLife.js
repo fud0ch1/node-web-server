@@ -1,5 +1,3 @@
-// This was taken from the following sweet codepen I found. working on building my own:
-// https://codepen.io/atwulf/pen/oLBmWO
 console.clear()
 
 const canvas = document.querySelector('canvas')
