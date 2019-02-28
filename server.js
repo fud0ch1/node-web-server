@@ -1,7 +1,8 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
-
+// Sets port as either heroku port or localhost 3000
+const port = process.env.PORT || 3000;
 var app = express();
 // Use View Engine - hbs, hbs is handlebars
 hbs.registerPartials(__dirname + '/views/partials')
@@ -22,11 +23,11 @@ app.use((req, res, next) =>{
   });
   next();
 });
-// Renders a Maintenance Page.
-app.use((req, res, next) => {
-  res.render('maintenance.hbs');
-  // next();
-});
+// // Renders a Maintenance Page.
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs');
+//   // next();
+// });
 
 app.use(express.static(__dirname + '/public'));
 // Function for dynamic placeholders in the handlebar pages {{getCurrentYear}}
@@ -61,7 +62,10 @@ app.get('/bad', (req, res) => {
     errorMessage: 'Unable to handle request'
   })
 })
-
-app.listen(3000, () => {
-  console.log('Server is up on Port 3000')
+// Heroku environment variable
+app.listen(port, () => {
+  console.log(`Server is up on ${port}`)
 });
+// app.listen(3000, () => {
+//   console.log('Server is up on Port 3000')
+// });
