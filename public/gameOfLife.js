@@ -1,3 +1,4 @@
+// Code copied from https://codepen.io/atwulf/pen/oLBmWO 
 console.clear()
 
 const canvas = document.querySelector('canvas')
